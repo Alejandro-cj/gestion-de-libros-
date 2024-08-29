@@ -58,4 +58,14 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+//renderizar xd 
+router.get('/view', async (req, res) => {
+  try {
+    const books = await Book.find();
+    res.render('books', { books });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener los libros' });
+  }
+});
+
 export default router;
